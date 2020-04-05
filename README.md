@@ -16,7 +16,7 @@ $ npm start
 
 Create a ".env" file on "backend" root folder containing the following template, changing the variables between "<>":
 ```
-MONGODB_URL=mongodb+srv://<database_name>:<password>@cluster0-3yhjx.mongodb.net/test?retryWrites=true&w=majority
+MONGODB_URL=<your_mongodb_url>
 JWT_KEY=<your_random_jwt_key>
 PORT=<port>
 ```
