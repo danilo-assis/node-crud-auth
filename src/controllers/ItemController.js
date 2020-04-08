@@ -2,12 +2,6 @@ const Item = require('../models/Item');
 
 module.exports = {
   async Create(req, res) {
-    // try {
-    //   const item = new Item(req.body);
-    //   await item.save();
-    //   } catch (error) {
-    //   res.status(400).send(error);
-    // }
 
     const item = new Item(req.body);
     item.save()
