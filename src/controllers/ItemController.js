@@ -46,4 +46,37 @@ module.exports = {
         });
       });
   },
+
+  async Update(req, res) {
+    console.log('req.body', req.body);
+    if (req.body > 0) {
+      return res.status(400).send({
+        message: "Item content can not be empty"
+      });
+    }
+
+    Item.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true },
+    )
+      .then((item) => {
+        if (!item) {
+          return res.status(404).send({
+            message: 'item not found with id ' + req.params.id,
+          });
+        }
+        res.send(item);
+      })
+      .catch((err) => {
+        if (err.kind === 'ObjectId') {
+          return res.status(404).send({
+            message: 'item not found with id ' + req.params.id,
+          });
+        }
+        return res.status(500).send({
+          message: 'Error updating item with id ' + req.params.id,
+        });
+      });
+  },
 };

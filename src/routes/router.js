@@ -21,6 +21,6 @@ router.post('/itens', ItemController.Create);
 router.get('/itens', ItemController.Search);
 router.get('/itens/item/', ItemController.SearchOne);
 // router.delete('/itens', ItemController.Delete);
-// router.patch('/itens', ItemController.Update);
+router.patch('/itens/:id', ItemController.Update);
 
 module.exports = router;
