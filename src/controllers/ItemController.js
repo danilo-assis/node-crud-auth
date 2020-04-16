@@ -55,7 +55,14 @@ module.exports = {
       });
     }
 
-    Item.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    Item.findByIdAndUpdate(
+      req.params.id,
+      {
+        ...req.body,
+        updatedAt: Date.now(),
+      },
+      { new: true },
+    )
       .then((item) => {
         if (!item) {
           return res.status(404).send({
