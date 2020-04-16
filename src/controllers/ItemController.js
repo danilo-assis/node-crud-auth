@@ -48,7 +48,6 @@ module.exports = {
   },
 
   async Update(req, res) {
-    console.log('req.body', req.body);
     if (req.body > 0) {
       return res.status(400).send({
         message: 'Item content can not be empty',
