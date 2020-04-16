@@ -16,11 +16,13 @@ const itemSchema = mongoose.Schema({
     type: Date,
     required: true,
     trim: true,
+    default: Date.now
   },
   updatedAt: {
     type: Date,
     required: true,
     trim: true,
+    default: Date.now
   },
 });
 
