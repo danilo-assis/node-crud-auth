@@ -12,6 +12,16 @@ const itemSchema = mongoose.Schema({
     trim: true,
     unique: true,
   },
+  createdAt: {
+    type: Date,
+    required: true,
+    trim: true,
+  },
+  lastModified: {
+    type: Date,
+    required: true,
+    trim: true,
+  },
 });
 
 const item = mongoose.model('item', itemSchema);
