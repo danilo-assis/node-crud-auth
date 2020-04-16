@@ -26,11 +26,11 @@ module.exports = {
   },
 
   async SearchOne(req, res) {
-    Item.findById(req.body._id)
+    Item.findOne({ slug: req.params.slug })
       .then((item) => {
         if (!item) {
           return res.status(404).send({
-            message: 'item not found with id ' + req.body._id,
+            message: 'item not found with slug ' + req.params.slug,
           });
         }
         res.send(item);
@@ -38,11 +38,11 @@ module.exports = {
       .catch((err) => {
         if (err.kind === 'ObjectId') {
           return res.status(404).send({
-            message: 'item not found with id ' + req.body._id,
+            message: 'item not found with slug ' + req.params.slug,
           });
         }
         return res.status(500).send({
-          message: 'Error retrieving item with id ' + req.body._id,
+          message: 'Error retrieving item with slug ' + req.params.slug,
         });
       });
   },

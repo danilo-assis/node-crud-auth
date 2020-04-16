@@ -15,7 +15,7 @@ router.post('/users/me/logoutall', auth, SessionController.LogoutAll);
 
 router.post('/itens', ItemController.Create);
 router.get('/itens', ItemController.Search);
-router.get('/itens/item/', ItemController.SearchOne);
+router.get('/itens/:slug', ItemController.SearchOne);
 router.delete('/itens/:id', ItemController.Delete);
 router.patch('/itens/:id', ItemController.Update);
 
