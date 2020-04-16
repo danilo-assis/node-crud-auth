@@ -51,15 +51,11 @@ module.exports = {
     console.log('req.body', req.body);
     if (req.body > 0) {
       return res.status(400).send({
-        message: "Item content can not be empty"
+        message: 'Item content can not be empty',
       });
     }
 
-    Item.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true },
-    )
+    Item.findByIdAndUpdate(req.params.id, req.body, { new: true })
       .then((item) => {
         if (!item) {
           return res.status(404).send({
@@ -76,6 +72,28 @@ module.exports = {
         }
         return res.status(500).send({
           message: 'Error updating item with id ' + req.params.id,
+        });
+      });
+  },
+
+  Delete(req, res) {
+    Item.findByIdAndRemove(req.params.id)
+      .then((item) => {
+        if (!item) {
+          return res.status(404).send({
+            message: 'item not found with id ' + req.params.id,
+          });
+        }
+        res.send({ message: 'item deleted successfully!' });
+      })
+      .catch((err) => {
+        if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+          return res.status(404).send({
+            message: 'item not found with id ' + req.params.id,
+          });
+        }
+        return res.status(500).send({
+          message: 'Could not delete item with id ' + req.params.id,
         });
       });
   },
