@@ -17,7 +17,7 @@ const itemSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
-  lastModified: {
+  updatedAt: {
     type: Date,
     required: true,
     trim: true,
