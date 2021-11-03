@@ -15,7 +15,7 @@
     "mongodb": "^3.2.7",
     "mongoose": "^5.7.5",
     "nodemailer": "^6.4.6",
-    "validator": "^11.0.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "env-cmd": "^9.0.3",
